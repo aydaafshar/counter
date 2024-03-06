@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import { useState } from "react";
 function App() {
+  const [number, setNumber] = useState(0);
+  const handleClick = (e) => {
+    if (e === "sub") {
+      setNumber(number - 1);
+    } else if (e === "reset") {
+      setNumber(0);
+    } else {
+      setNumber(number + 1);
+    }
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className="counter-sec">
+      <div className="counter">
+        <h1>React Counter App</h1>
+        <p>{number}</p>
+        <div className="btns">
+          <button onClick={() => handleClick("sub")}>-subtract</button>
+          <button onClick={() => handleClick("reset")}>Reset</button>
+          <button onClick={() => handleClick("add")}>+add</button>
+        </div>
+      </div>
+    </section>
   );
 }
 
